@@ -1,0 +1,2 @@
+# Serving env: separate from alfworld to avoid torch/dependency conflicts.
+vllm>=0.6.3

@@ -1,0 +1,8 @@
+name: alfworld-qwen-serve
+channels:
+  - conda-forge
+dependencies:
+  - python=3.10
+  - pip
+  - pip:
+      - "vllm>=0.6.3"

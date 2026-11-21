@@ -1,0 +1,97 @@
+{
+  "model": "Qwen2.5-7B-Instruct",
+  "split": "test",
+  "alfworld_split": "eval_out_of_distribution",
+  "n_tasks": 134,
+  "success_rate": 0.7014925373134329,
+  "avg_reward": 0.7014925373134329,
+  "avg_steps": 16.813432835820894,
+  "terminate_reasons": {
+    "success": 94,
+    "max_steps": 40
+  },
+  "by_task_type": {
+    "look_at_obj": {
+      "n": 18,
+      "success": 5,
+      "invalid_actions": 198,
+      "parse_errors": 1,
+      "success_rate": 0.2777777777777778
+    },
+    "pick_and_place": {
+      "n": 24,
+      "success": 21,
+      "invalid_actions": 19,
+      "parse_errors": 0,
+      "success_rate": 0.875
+    },
+    "pick_clean_then_place": {
+      "n": 31,
+      "success": 25,
+      "invalid_actions": 66,
+      "parse_errors": 0,
+      "success_rate": 0.8064516129032258
+    },
+    "pick_cool_then_place": {
+      "n": 21,
+      "success": 18,
+      "invalid_actions": 1,
+      "parse_errors": 0,
+      "success_rate": 0.8571428571428571
+    },
+    "pick_heat_then_place": {
+      "n": 23,
+      "success": 20,
+      "invalid_actions": 6,
+      "parse_errors": 0,
+      "success_rate": 0.8695652173913043
+    },
+    "pick_two_obj": {
+      "n": 17,
+      "success": 5,
+      "invalid_actions": 103,
+      "parse_errors": 0,
+      "success_rate": 0.29411764705882354
+    }
+  },
+  "config": {
+    "model": {
+      "name": "Qwen2.5-7B-Instruct",
+      "api_base": "http://localhost:8000/v1",
+      "api_key": "EMPTY",
+      "temperature": 0.0,
+      "max_tokens": 512,
+      "token_param": "max_completion_tokens",
+      "seed": 0,
+      "request_timeout": 180,
+      "max_retries": 6,
+      "extra_body": {}
+    },
+    "env": {
+      "alfworld_data": null,
+      "split": "test",
+      "max_steps": 30,
+      "max_bad_steps": 50,
+      "keep_room_description": false,
+      "action_syntax": "auto"
+    },
+    "prompt": {
+      "instruction_path": "prompts/alfworld_inst.txt",
+      "icl_path": "prompts/alfworld_icl.json",
+      "icl_num": 1,
+      "parser": "lenient"
+    },
+    "run": {
+      "output_dir": "runs/qwen2.5-7b-alfworld",
+      "num_shards": 1,
+      "shard_index": 0,
+      "resume": true,
+      "limit": null,
+      "limit_per_type": null,
+      "save_history": true,
+      "notes_path": null,
+      "note_mode": "query"
+    }
+  },
+  "generated_at": "2026-11-21T11:16:04+0800"
+}

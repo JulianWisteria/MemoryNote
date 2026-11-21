@@ -1,0 +1,5 @@
+# Evaluation env: talks to the vLLM server, runs ALFWorld and this harness.
+# ALFWorld requires Python 3.9/3.10 and pulls a lot of deps, so keep it
+# separate from the vLLM serving env.
+openai>=1.40.0
+PyYAML>=6.0

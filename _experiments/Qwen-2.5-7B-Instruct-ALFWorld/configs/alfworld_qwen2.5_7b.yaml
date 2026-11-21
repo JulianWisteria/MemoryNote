@@ -1,0 +1,42 @@
+# Faithful reimplementation of the MPO ALFWorld baseline
+# (arXiv:2503.02682, Table 6): Qwen2.5-7B-Instruct, 1-shot ReAct.
+#
+# Relative paths are resolved against the project root
+# (the directory containing alfworld_eval/).
+
+model:
+  name: Qwen2.5-7B-Instruct          # must match vLLM --served-model-name
+  api_base: http://localhost:8000/v1
+  api_key: EMPTY
+  temperature: 0.0
+  max_tokens: 512
+  token_param: max_completion_tokens  # auto-falls back to max_tokens
+  seed: 0                             # set null / --no-seed to disable
+  request_timeout: 180
+  max_retries: 6
+  extra_body: {}                      # e.g. {"chat_template_kwargs": {"enable_thinking": false}}
+
+env:
+  alfworld_data: null                 # null -> $ALFWORLD_DATA or ~/.cache/alfworld
+  split: test                         # test=134 unseen, dev=140 seen, train=3553
+  max_steps: 30                       # MPO uses 30 (original ReAct notebook uses 49/50)
+  max_bad_steps: 50
+  keep_room_description: false        # MPO keeps only "Your task is to: ..."
+  action_syntax: auto                 # auto | put | move (alfworld 0.4.x wants move)
+
+prompt:
+  instruction_path: prompts/alfworld_inst.txt
+  icl_path: prompts/alfworld_icl.json
+  icl_num: 1                          # one full trajectory per task type
+  parser: lenient                     # lenient | strict_mpo
+
+run:
+  output_dir: runs/qwen2.5-7b-alfworld
+  num_shards: 1
+  shard_index: 0
+  resume: true
+  limit: null
+  limit_per_type: null                # e.g. 4 -> 4 envs per task type (24-env pilot)
+  save_history: true
+  notes_path: null                    # JSON/JSONL for note injection; null = baseline
+  note_mode: query                    # query | observation | none
