@@ -3,10 +3,6 @@ __pycache__/
 *.pyc
 .venv/
 
-# Experiment outputs (keep locally; add with -f if you want them in git)
-runs/
-**/runs/
-
 # Copyrighted papers (keep local; do not redistribute)
 papers/*.pdf
 

@@ -1,0 +1,43 @@
+\title{The Causal Effect of Note Clarity on LLM Agent Memory}
+
+\student{Junlin Wang}{2026040140}
+\student{Xule Jin}{2026040118}
+\student{Xuze Lu}{2026040132}
+
+\maketitle
+
+\section{Background}
+
+LLM agents write natural-language notes from experience and reuse them in later attempts \cite{reflexion}. Such notes can help, be inert, or harm \cite{kim2026,honestlying}. Prior work has studied abstraction \cite{hu2026,mtl}, relevance \cite{kim2026}, and correctness \cite{honestlying} as separate dimensions. We focus on \textbf{clarity}, the degree to which a note admits a single, executable interpretation. Clarity is not specificity: an abstract note can be clear, and a specific note can be ambiguous. We test whether clarity affects task success and whether it amplifies correctness, expecting operational notes to help most and clear-wrong notes to harm most.
+
+\section{Literature Review}
+
+Reflexion popularized self-reflection as reusable memory; later work extended it to extracted insights \cite{expel}, reusable workflows \cite{awm}, and evolving playbooks \cite{ace}. These systems show that notes can be written and reused, but most notes are model-written, so content is entangled with writer capability.
+
+Three dimensions have been studied separately. \emph{Abstraction}: Hu \cite{hu2026} and Memory Transfer Learning \cite{mtl} compare raw trajectories with abstract insights; abstraction improves transfer but can lose answer-bearing detail \cite{memoryuseful}. \emph{Relevance}: Kim \cite{kim2026} shows that an equal-length irrelevant note is inert; relevance is necessary but not sufficient. \emph{Correctness}: Honest Lying \cite{honestlying} shows that wrong self-diagnoses persist and harm; correctness matters, but it is often confounded with how clearly the note is written.
+
+What these lines leave open is whether the note is clear enough to act on. Adjacent work on instruction ambiguity finds that underspecified instructions degrade performance and that more detail is not uniformly better \cite{ambigswe,morethanascore}, but it studies task instructions rather than agent-written notes.
+
+To our knowledge, no prior work isolates clarity with human-written, matched notes and crosses it with correctness. Our experiment fills this gap.
+
+\section{Method}
+
+\begin{itemize}
+\item \textbf{Setting.} 134 held-out ALFWorld environments \cite{alfworld}, Qwen2.5-7B-Instruct \cite{qwen25} (14B optional), baseline naive one-shot ReAct \cite{react}.
+\item \textbf{Notes.} Human-written notes at three clarity levels (ambiguous, operational, over-specific) crossed with correctness.
+\item \textbf{Procedure.} One trial per task at temperature 0 with a 30-step limit; the note is injected after the task; all conditions share the same model, task set, prompt, and injection position.
+\item \textbf{Metrics.} Binary task success; we also record note-following.
+\item \textbf{Analysis.} We compare success rates across the $3 \times 2$ conditions and report results by task family.
+\end{itemize}
+
+\section{Expected Results}
+
+\begin{itemize}
+\item \textbf{H1 (clarity matters).} Operational notes yield the highest success, above ambiguous and over-specific notes.
+\item \textbf{H2 (amplification).} Clear-wrong harms more than ambiguous-wrong, and clear-correct helps more than ambiguous-correct.
+\item \textbf{H3 (hard families).} The clarity effect is larger on harder task families.
+\end{itemize}
+
+\section{AI Usage Disclosure}
+
+We used generative AI tools to assist with brainstorming, literature search, and language editing. All AI-assisted outputs were reviewed, verified, and edited by the authors, who take full responsibility for the content.
