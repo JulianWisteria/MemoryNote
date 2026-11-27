@@ -4,7 +4,6 @@ __pycache__/
 .venv/
 
 # Copyrighted papers (keep local; do not redistribute)
-papers/*.pdf
 docs/papers/*.pdf
 
 # OS/editor
