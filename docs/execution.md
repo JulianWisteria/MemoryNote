@@ -1,4 +1,4 @@
-Model = Qwen-2.5-7B-Instract,  Qwen-2.5-7B-Instract [Optional]
+Model = Qwen-2.5-7B-Instruct,  Qwen-2.5-14B-Instruct [Optional]
 
 Harness = 1-shot ReAct
 
